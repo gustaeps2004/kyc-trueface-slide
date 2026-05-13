@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KYC TrueFace — Pitch</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1b2a;
+    --bg2: #112240;
+    --bg3: #1a2f50;
+    --accent: #00e5a0;
+    --accent2: #38bdf8;
+    --text: #e8f4fd;
+    --muted: #8fa8c8;
+    --card: rgba(17,34,64,0.85);
+    --border: rgba(56,189,248,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ---- SLIDES CONTAINER ---- */
+  .slides {
+    width: 100%;
+  }
+
+  section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ---- NOISE / GRID TEXTURE ---- */
+  section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  /* ==============================
+     SLIDE 1 — COVER
+  ============================== */
+  #s1 {
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, #0d3060 0%, var(--bg) 70%);
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
+  }
+
+  .logo-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 36px;
+    animation: fadeUp .8s ease both;
+  }
+
+  .logo-icon {
+    width: 64px; height: 64px;
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    background: rgba(0,229,160,0.08);
+    box-shadow: 0 0 28px rgba(0,229,160,0.25);
+  }
+
+  .logo-name {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .logo-name span { color: var(--accent); }
+
+  .cover-subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 60px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+    animation: fadeUp .9s .1s ease both;
+  }
+
+  .cover-divider {
+    width: 80px; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    margin: 0 auto 48px;
+    border-radius: 2px;
+    animation: expandW .8s .3s ease both;
+  }
+
+  .author-block {
+    animation: fadeUp .9s .2s ease both;
+  }
+
+  .author-block h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .author-block p {
+    font-size: 1rem;
+    color: var(--accent2);
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+  }
+
+  .scan-ring {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 320px; height: 320px;
+    border: 1.5px solid rgba(0,229,160,0.2);
+    border-radius: 50%;
+    animation: pulse 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .scan-ring::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1.5px solid rgba(56,189,248,0.15);
+    border-radius: 50%;
+    animation: pulse 3s .6s ease-in-out infinite;
+  }
+
+  /* ==============================
+     GENERIC SLIDE LAYOUT
+  ============================== */
+  .slide-inner {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    opacity: .8;
+  }
+
+  .slide-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 36px;
+    letter-spacing: -0.5px;
+  }
+
+  .slide-title span { color: var(--accent); }
+
+  /* ==============================
+     SLIDE 2 — EXPERIÊNCIA / PROBLEMA
+  ============================== */
+  #s2 {
+    background: radial-gradient(ellipse 60% 50% at 30% 60%, #0a2a4a 0%, var(--bg) 70%);
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px 2px 0 0;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .stat-big {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin: 16px 0 8px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* ==============================
+     SLIDE 3 — COMO FUNCIONA
+  ============================== */
+  #s3 {
+    background: radial-gradient(ellipse 50% 60% at 70% 30%, #062a3a 0%, var(--bg) 70%);
+  }
+
+  .flow-steps {
+    display: flex;
+    gap: 0;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .step {
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+    position: relative;
+    padding: 0 12px;
+  }
+
+  .step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 28px;
+    font-size: 1.4rem;
+    color: var(--accent2);
+    opacity: .5;
+  }
+
+  .step-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+    background: rgba(0,229,160,0.06);
+    box-shadow: 0 0 18px rgba(0,229,160,0.15);
+  }
+
+  .step h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .step p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ==============================
+     SLIDE 4 — TECNOLOGIAS
+  ============================== */
+  #s4 {
+    background: radial-gradient(ellipse 70% 50% at 50% 80%, #0d2040 0%, var(--bg) 70%);
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .tech-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 22px;
+    transition: border-color .25s, transform .25s;
+  }
+
+  .tech-card:hover {
+    border-color: var(--accent2);
+    transform: translateY(-4px);
+  }
+
+  .tech-layer {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 10px;
+  }
+
+  .tech-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .tech-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .tag {
+    background: rgba(56,189,248,0.1);
+    border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    color: var(--accent2);
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* ==============================
+     SLIDE 5 — CASO DE USO
+  ============================== */
+  #s5 {
+    background: radial-gradient(ellipse 60% 50% at 40% 50%, #081e3a 0%, var(--bg) 70%);
+  }
+
+  .usecase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .actor-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .actor-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+
+  .actor-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: var(--accent2);
+  }
+
+  .actor-icon { font-size: 1.4rem; }
+
+  .actor-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .action-pill {
+    background: rgba(0,229,160,0.07);
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .usecase-diagram {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+  }
+
+  .uc-system-title {
+    text-align: center;
+    font-size: 0.75rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .uc-group {
+    margin-bottom: 20px;
+  }
+
+  .uc-group-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent2);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 10px;
+    opacity: .7;
+  }
+
+  .uc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .uc-oval {
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 18px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: rgba(56,189,248,0.04);
+  }
+
+  /* ==============================
+     SLIDE 6 — DER
+  ============================== */
+  #s6 {
+    background: radial-gradient(ellipse 60% 50% at 60% 40%, #071530 0%, var(--bg) 70%);
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+
+  .der-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .der-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .entity {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .entity-header {
+    background: rgba(0,229,160,0.1);
+    border-bottom: 1px solid rgba(0,229,160,0.2);
+    padding: 10px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .entity-fields {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .field {
+    font-size: 0.7rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+    padding: 2px 0;
+    border-bottom: 1px solid rgba(56,189,248,0.06);
+  }
+
+  .field:last-child { border-bottom: none; }
+
+  .field .ftype {
+    color: var(--accent2);
+    opacity: .7;
+    font-size: 0.65rem;
+  }
+
+  /* ==============================
+     ANIMATIONS
+  ============================== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes expandW {
+    from { width: 0; }
+    to   { width: 80px; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: .3; transform: scale(1) translateY(-50%); }
+    50% { opacity: .7; transform: scale(1.05) translateY(-48%); }
+  }
+
+  /* ==============================
+     NAV DOTS
+  ============================== */
+  .nav-dots {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+  }
+
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(56,189,248,0.3);
+    cursor: pointer;
+    transition: background .25s, transform .25s;
+    border: none;
+  }
+
+  .nav-dot.active, .nav-dot:hover {
+    background: var(--accent);
+    transform: scale(1.4);
+  }
+
+  .slide-counter {
+    position: fixed;
+    bottom: 28px;
+    right: 36px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    z-index: 100;
+    opacity: .6;
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-dots" id="navDots"></nav>
+<div class="slide-counter" id="counter">01 / 06</div>
+
+<div class="slides" id="slides">
+
+  <!-- ========================
+       SLIDE 1 — COVER
+  ========================= -->
+  <section id="s1">
+    <div class="scan-ring"></div>
+    <div class="slide-inner" style="z-index:1;">
+      <div class="logo-badge">
+        <div class="logo-name">KYC <span>TrueFace</span></div>
+      </div>
+      <p class="cover-subtitle">Validação Biométrica via API</p>
+      <div class="cover-divider"></div>
+      <div class="author-block">
+        <h2>Gustavo do Espirito Santo</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       SLIDE 2 — EXPERIÊNCIA & PROBLEMA
+  ========================= -->
+  <section id="s2">
+    <div class="slide-inner">
+      <p class="slide-tag">02 — Contexto</p>
+      <h2 class="slide-title">De onde vem a <span>ideia</span></h2>
+      <div class="two-col">
+
+        <div class="card">
+          <div class="card-icon">🏦</div>
+          <h3>Experiência em Fintech</h3>
+          <p>
+            Na <strong style="color:var(--accent2)">BMP</strong>, disponibilizávamos serviços bancários completos via API, de onboarding a transações. Porém, muitos dos nossos parceiros <strong style="color:var(--text)">não conseguiam implementar a validação biométrica facial</strong>: o prazo de desenvolvimento era curto, as equipes eram enxutas e a integração de biometria era tratada como algo não importante.
+          </p>
+          <p style="margin-top:14px;">
+            Percebi que o gargalo não era a tecnologia, era a <em style="color:var(--accent)">complexidade de integração</em>. Se o processo fosse 100% via API, qualquer equipe poderia implementar em dias.
+          </p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>O Problema que estou resolvendo</h3>
+            <p>
+              Integrar biometria facial costuma exigir meses de desenvolvimento e equipes especializadas. O KYC TrueFace entrega tudo via API + Webhook, reduzindo drasticamente o custo e o tempo.
+            </p>
+          </div>
+
+          <div class="card" style="display:flex;gap:32px;align-items:center;">
+            <div>
+              <div class="stat-big">~60%</div>
+              <div class="stat-label">Redução no tempo de integração</div>
+            </div>
+            <div style="width:1px;height:64px;background:var(--border);"></div>
+            <div>
+              <div class="stat-big">3–5</div>
+              <div class="stat-label">Dias para integrar via API</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       SLIDE 3 — COMO FUNCIONA
+  ========================= -->
+  <section id="s3">
+    <div class="slide-inner">
+      <p class="slide-tag">03 — Solução</p>
+      <h2 class="slide-title">Como o KYC TrueFace <span>funciona</span></h2>
+      <div class="flow-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h4>Envio de Imagens</h4>
+          <p>O cliente envia documento de identidade + selfie via chamada de API REST</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h4>Processamento Biométrico</h4>
+          <p>AWS Rekognition compara o rosto do documento com a selfie enviada</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h4>Fila de Mensageria</h4>
+          <p>AWS SNS + SQS gerenciam o fluxo assíncrono com garantia de entrega</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h4>Webhook de Resultado</h4>
+          <p>O parceiro recebe o resultado (aprovado / pendente / reprovado) em seu endpoint</p>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <h4>Consulta de Status</h4>
+          <p>API de consulta disponível para verificar o resultado a qualquer momento</p>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;display:flex;gap:20px;flex-wrap:wrap;">
+        <div class="card" style="flex:1;min-width:200px;padding:20px 24px;">
+          <p style="font-size:.8rem;color:var(--muted);">
+            🔑 <strong style="color:var(--text)">100% via API</strong> — sem SDK proprietário, sem dependência de plataforma. Qualquer linguagem, qualquer stack.
+          </p>
+        </div>
+        <div class="card" style="flex:1;min-width:200px;padding:20px 24px;">
+          <p style="font-size:.8rem;color:var(--muted);">
+            📋 <strong style="color:var(--text)">Revisão manual integrada</strong> — casos mais sensíveis são enviados para análise no painel administrativo.
+          </p>
+        </div>
+        <div class="card" style="flex:1;min-width:200px;padding:20px 24px;">
+          <p style="font-size:.8rem;color:var(--muted);">
+            🔔 <strong style="color:var(--text)">Webhook confiável</strong> — entrega garantida com retry automático via SQS.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       SLIDE 4 — TECNOLOGIAS
+  ========================= -->
+  <section id="s4">
+    <div class="slide-inner">
+      <p class="slide-tag">04 — Stack Técnico</p>
+      <h2 class="slide-title">Tecnologias <span>utilizadas</span></h2>
+      <div class="tech-grid">
+
+        <div class="tech-card">
+          <div class="tech-layer">Front-End</div>
+          <h4>Painel Administrativo</h4>
+          <p>Interface responsiva para gestão de usuários, onboardings e análises pendentes.</p>
+          <div class="tech-tags">
+            <span class="tag">React</span>
+            <span class="tag">TailwindCSS</span>
+            <span class="tag">Vercel</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-layer">Back-End</div>
+          <h4>API & Processamento</h4>
+          <p>API REST robusta para recepção, orquestração dos fluxos de biometria.</p>
+          <div class="tech-tags">
+            <span class="tag">.NET 8</span>
+            <span class="tag">C#</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-layer">Infraestrutura</div>
+          <h4>Cloud & Hospedagem</h4>
+          <p>Hospedagem do back-end em definição. Front-end em produção no Vercel.</p>
+          <div class="tech-tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Vercel</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-layer">Biometria</div>
+          <h4>Reconhecimento Facial</h4>
+          <p>Comparação facial entre selfie e documento com alta precisão usando serviço gerenciado da AWS.</p>
+          <div class="tech-tags">
+            <span class="tag">AWS Rekognition</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-layer">Mensageria</div>
+          <h4>Webhook & Filas</h4>
+          <p>Entrega assíncrona do resultado via webhook com retry automático e desacoplamento de serviços.</p>
+          <div class="tech-tags">
+            <span class="tag">AWS SNS</span>
+            <span class="tag">AWS SQS</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-layer">Banco de Dados</div>
+          <h4>Persistência</h4>
+          <p>Banco relacional gerenciado em cloud, com alta disponibilidade e backups automáticos.</p>
+          <div class="tech-tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Aiven</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       SLIDE 5 — CASO DE USO
+  ========================= -->
+  <section id="s5">
+    <div class="slide-inner">
+      <p class="slide-tag">05 — Caso de Uso</p>
+      <h2 class="slide-title">Quem usa e como <span>interage</span></h2>
+      <div class="usecase-grid">
+
+        <div class="actor-col">
+          <div class="actor-card">
+            <div class="actor-name"><span class="actor-icon">🤖</span> Client via API</div>
+            <div class="actor-actions">
+              <div class="action-pill">📤 Enviar imagens para processo biométrico</div>
+              <div class="action-pill">🔍 Consultar resultado</div>
+              <div class="action-pill">🔔 Receber webhook</div>
+            </div>
+          </div>
+
+          <div class="actor-card">
+            <div class="actor-name"><span class="actor-icon">👤</span> Usuário comum</div>
+            <div class="actor-actions">
+              <div class="action-pill">🆕 Realizar primeiro acesso</div>
+              <div class="action-pill">🔑 Efetuar login</div>
+              <div class="action-pill">🔒 Resetar senha</div>
+              <div class="action-pill">📋 Visualizar histórico</div>
+              <div class="action-pill">⏳ Visualizar análises pendentes</div>
+            </div>
+          </div>
+
+          <div class="actor-card" style="border-color:rgba(0,229,160,0.3);">
+            <div class="actor-name" style="color:var(--accent)"><span class="actor-icon">🛡️</span> Usuário administrador</div>
+            <div class="actor-actions">
+              <div class="action-pill">✅ Aprovar análises pendentes</div>
+              <div class="action-pill">❌ Recusar análises pendentes</div>
+              <div class="action-pill">👥 Gerenciar usuários</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="usecase-diagram">
+          <div class="uc-system-title">⬡ Sistema KYC TrueFace</div>
+
+          <div class="uc-group">
+            <div class="uc-group-label">API Client</div>
+            <div class="uc-actions">
+              <div class="uc-oval">Enviar imagens biométricas</div>
+              <div class="uc-oval">Consultar resultado</div>
+              <div class="uc-oval">Receber webhook</div>
+            </div>
+          </div>
+
+          <div class="uc-group">
+            <div class="uc-group-label">Usuário comum → Usuário Administrador</div>
+            <div class="uc-actions">
+              <div class="uc-oval">Primeiro acesso</div>
+              <div class="uc-oval">Login</div>
+              <div class="uc-oval">Resetar senha</div>
+              <div class="uc-oval">Histórico</div>
+              <div class="uc-oval">Análises pendentes</div>
+            </div>
+          </div>
+
+          <div class="uc-group">
+            <div class="uc-group-label">Administrador</div>
+            <div class="uc-actions">
+              <div class="uc-oval" style="border-color:rgba(0,229,160,.3);color:var(--accent);">Aprovar análises</div>
+              <div class="uc-oval" style="border-color:rgba(0,229,160,.3);color:var(--accent);">Recusar análises</div>
+              <div class="uc-oval" style="border-color:rgba(0,229,160,.3);color:var(--accent);">Gerenciar usuários</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       SLIDE 6 — DER
+  ========================= -->
+  <section id="s6">
+    <div class="slide-inner" style="max-width:1100px;">
+      <p class="slide-tag">06 — Modelagem</p>
+      <h2 class="slide-title">Diagrama Entidade-<span>Relacionamento</span></h2>
+
+      <div style="width:100%;overflow:auto;margin-top:24px;">
+        <svg id="derSvg" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 1060 620"
+             style="width:100%;min-width:900px;font-family:'Space Mono',monospace;">
+
+          <defs>
+            <!-- arrow marker -->
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#38bdf8" opacity=".7"/>
+            </marker>
+            <marker id="arrG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#00e5a0" opacity=".8"/>
+            </marker>
+          </defs>
+
+          <!-- ===================== ENTITIES ===================== -->
+
+          <!-- Partner  (center-ish) x=390 y=200 w=210 -->
+          <g id="ePartner">
+            <rect x="390" y="200" width="230" height="120" rx="10" fill="#112240" stroke="#38bdf8" stroke-width="1.2" stroke-opacity=".4"/>
+            <rect x="390" y="200" width="230" height="28"  rx="10" fill="rgba(0,229,160,.12)"/>
+            <rect x="390" y="218" width="230" height="10"  fill="rgba(0,229,160,.12)"/>
+            <text x="495" y="219" text-anchor="middle" fill="#FFF" font-size="11" font-weight="700">Partner</text>
+            <line x1="390" y1="228" x2="600" y2="228" stroke="#38bdf8" stroke-opacity=".2"/>
+            <!-- fields -->
+            <text x="400" y="244" fill="#e8f4fd" font-size="9">🔑 Code</text>              <text x="555" y="244" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="400" y="258" fill="#8fa8c8" font-size="9">IdNumber</text>             <text x="555" y="258" fill="#38bdf8" font-size="8" opacity=".7">varchar(14)</text>
+            <text x="400" y="272" fill="#8fa8c8" font-size="9">Name</text>                 <text x="555" y="272" fill="#38bdf8" font-size="8" opacity=".7">varchar(150)</text>
+            <text x="400" y="286" fill="#8fa8c8" font-size="9">Email</text>                <text x="555" y="286" fill="#38bdf8" font-size="8" opacity=".7">varchar(150)</text>
+            <text x="400" y="300" fill="#8fa8c8" font-size="9">InclusionDt</text>          <text x="555" y="300" fill="#38bdf8" font-size="8" opacity=".7">datetime</text>
+            <text x="400" y="314" fill="#8fa8c8" font-size="9">Situation</text>            <text x="555" y="314" fill="#38bdf8" font-size="8" opacity=".7">int</text>
+            <line x1="390" y1="320" x2="600" y2="320" stroke="#38bdf8" stroke-opacity=".08"/>
+            <line x1="390" y1="334" x2="600" y2="334" stroke="#38bdf8" stroke-opacity=".08"/>
+          </g>
+
+          <!-- PartnerCredentials  x=390 y=20 w=230 -->
+          <g id="ePartnerCred">
+            <rect x="390" y="20" width="230" height="120" rx="10" fill="#112240" stroke="#38bdf8" stroke-width="1.2" stroke-opacity=".4"/>
+            <rect x="390" y="20" width="230" height="28"  rx="10" fill="rgba(0,229,160,.12)"/>
+            <rect x="390" y="38" width="230" height="10"  fill="rgba(0,229,160,.12)"/>
+            <text x="505" y="38" text-anchor="middle" fill="#FFF" font-size="11" font-weight="700">PartnerCredentials</text>
+            <line x1="390" y1="48" x2="620" y2="48" stroke="#38bdf8" stroke-opacity=".2"/>
+            <text x="400" y="64"  fill="#e8f4fd" font-size="9">🔑 Code</text>             <text x="555" y="64"  fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="400" y="78"  fill="#8fa8c8" font-size="9">🔗 CodePartner</text>       <text x="555" y="78"  fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="400" y="92"  fill="#8fa8c8" font-size="9">ClientId</text>             <text x="555" y="92"  fill="#38bdf8" font-size="8" opacity=".7">varchar(100)</text>
+            <text x="400" y="106" fill="#8fa8c8" font-size="9">ClientSecret</text>         <text x="555" y="106" fill="#38bdf8" font-size="8" opacity=".7">varchar(100)</text>
+            <text x="400" y="120" fill="#8fa8c8" font-size="9">GrantType</text>            <text x="555" y="120" fill="#38bdf8" font-size="8" opacity=".7">varchar(100)</text>
+            <text x="400" y="134" fill="#8fa8c8" font-size="9">Situation</text>            <text x="555" y="134" fill="#38bdf8" font-size="8" opacity=".7">int</text>
+          </g>
+
+          <!-- Onboarding  x=740 y=150 w=210 -->
+          <g id="eOnboarding">
+            <rect x="740" y="150" width="230" height="135" rx="10" fill="#112240" stroke="#38bdf8" stroke-width="1.2" stroke-opacity=".4"/>
+            <rect x="740" y="150" width="230" height="28"  rx="10" fill="rgba(0,229,160,.12)"/>
+            <rect x="740" y="168" width="230" height="10"  fill="rgba(0,229,160,.12)"/>
+            <text x="850" y="168" text-anchor="middle" fill="#FFF" font-size="11" font-weight="700">Onboarding</text>
+            <line x1="740" y1="178" x2="960" y2="178" stroke="#38bdf8" stroke-opacity=".2"/>
+            <text x="750" y="194" fill="#e8f4fd" font-size="9">🔑 Code</text>             <text x="904" y="194" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="750" y="208" fill="#8fa8c8" font-size="9">🔗 CodePartner</text>       <text x="904" y="208" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="750" y="222" fill="#8fa8c8" font-size="9">InclusionDt</text>          <text x="904" y="222" fill="#38bdf8" font-size="8" opacity=".7">datetime</text>
+            <text x="750" y="236" fill="#8fa8c8" font-size="9">SituationDt</text>          <text x="904" y="236" fill="#38bdf8" font-size="8" opacity=".7">datetime</text>
+            <text x="750" y="250" fill="#8fa8c8" font-size="9">Situation</text>            <text x="904" y="250" fill="#38bdf8" font-size="8" opacity=".7">int</text>
+            <text x="750" y="264" fill="#8fa8c8" font-size="9">PathDocument</text>         <text x="904" y="264" fill="#38bdf8" font-size="8" opacity=".7">varchar(200)</text>
+            <text x="750" y="278" fill="#8fa8c8" font-size="9">PathSelfie</text>           <text x="904" y="278" fill="#38bdf8" font-size="8" opacity=".7">varchar(200)</text>
+          </g>
+
+          <!-- OnboardingResult  x=740 y=370 w=220 -->
+          <g id="eOnbResult">
+            <rect x="740" y="380" width="230" height="110" rx="10" fill="#112240" stroke="#38bdf8" stroke-width="1.2" stroke-opacity=".4"/>
+            <rect x="740" y="380" width="230" height="28"  rx="10" fill="rgba(0,229,160,.12)"/>
+            <rect x="740" y="398" width="230" height="10"  fill="rgba(0,229,160,.12)"/>
+            <text x="850" y="398" text-anchor="middle" fill="#FFF" font-size="11" font-weight="700">OnboardingResult</text>
+            <line x1="740" y1="408" x2="960" y2="408" stroke="#38bdf8" stroke-opacity=".2"/>
+            <text x="750" y="424" fill="#e8f4fd" font-size="9">🔑 Code</text>             <text x="905" y="424" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="750" y="438" fill="#8fa8c8" font-size="9">🔗 CodeOnboarding</text>    <text x="905" y="438" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="750" y="452" fill="#8fa8c8" font-size="9">🔗 CodeUser</text>          <text x="905" y="452" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="750" y="466" fill="#8fa8c8" font-size="9">InclusionDt</text>          <text x="905" y="466" fill="#38bdf8" font-size="8" opacity=".7">datetime</text>
+            <text x="750" y="480" fill="#8fa8c8" font-size="9">Observation</text>          <text x="905" y="480" fill="#38bdf8" font-size="8" opacity=".7">varchar(500)</text>
+          </g>
+
+          <!-- User  x=390 y=400 w=210 -->
+          <g id="eUser">
+            <rect x="390" y="400" width="230" height="175" rx="10" fill="#112240" stroke="#38bdf8" stroke-width="1.2" stroke-opacity=".4"/>
+            <rect x="390" y="400" width="230" height="28"  rx="10" fill="rgba(0,229,160,.12)"/>
+            <rect x="390" y="418" width="230" height="10"  fill="rgba(0,229,160,.12)"/>
+            <text x="500" y="418" text-anchor="middle" fill="#FFF" font-size="11" font-weight="700">User</text>
+            <line x1="390" y1="428" x2="610" y2="428" stroke="#38bdf8" stroke-opacity=".2"/>
+            <text x="400" y="444" fill="#e8f4fd" font-size="9">🔑 Code</text>             <text x="554" y="444" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="400" y="458" fill="#8fa8c8" font-size="9">🔗 CodePartner</text>       <text x="554" y="458" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="400" y="472" fill="#8fa8c8" font-size="9">Name</text>                 <text x="554" y="472" fill="#38bdf8" font-size="8" opacity=".7">varchar(150)</text>
+            <text x="400" y="486" fill="#8fa8c8" font-size="9">IdNumber</text>             <text x="554" y="486" fill="#38bdf8" font-size="8" opacity=".7">varchar(11)</text>
+            <text x="400" y="500" fill="#8fa8c8" font-size="9">BirthDate</text>            <text x="554" y="500" fill="#38bdf8" font-size="8" opacity=".7">date</text>
+            <text x="400" y="514" fill="#8fa8c8" font-size="9">MotherName</text>           <text x="554" y="514" fill="#38bdf8" font-size="8" opacity=".7">varchar(150)</text>
+            <text x="400" y="528" fill="#8fa8c8" font-size="9">Email</text>                <text x="554" y="528" fill="#38bdf8" font-size="8" opacity=".7">varchar(100)</text>
+            <text x="400" y="542" fill="#8fa8c8" font-size="9">Permission</text>           <text x="554" y="542" fill="#38bdf8" font-size="8" opacity=".7">int</text>
+            <text x="400" y="556" fill="#8fa8c8" font-size="9">Situation</text>            <text x="554" y="556" fill="#38bdf8" font-size="8" opacity=".7">int</text>
+            <text x="400" y="570" fill="#8fa8c8" font-size="9">InclusionDt</text>          <text x="554" y="570" fill="#38bdf8" font-size="8" opacity=".7">datetime</text>
+          </g>
+
+          <!-- UserAccess  x=60 y=380 w=210 -->
+          <g id="eUserAccess">
+            <rect x="60" y="380" width="230" height="135" rx="10" fill="#112240" stroke="#38bdf8" stroke-width="1.2" stroke-opacity=".4"/>
+            <rect x="60" y="380" width="230" height="28"  rx="10" fill="rgba(0,229,160,.12)"/>
+            <rect x="60" y="398" width="230" height="10"  fill="rgba(0,229,160,.12)"/>
+            <text x="170" y="398" text-anchor="middle" fill="#FFF" font-size="11" font-weight="700">UserAccess</text>
+            <line x1="60" y1="408" x2="280" y2="408" stroke="#38bdf8" stroke-opacity=".2"/>
+            <text x="70"  y="424" fill="#e8f4fd" font-size="9">🔑 Code</text>             <text x="224" y="424" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="70"  y="438" fill="#8fa8c8" font-size="9">Username</text>             <text x="224" y="438" fill="#38bdf8" font-size="8" opacity=".7">varchar(150)</text>
+            <text x="70"  y="452" fill="#8fa8c8" font-size="9">Password</text>             <text x="224" y="452" fill="#38bdf8" font-size="8" opacity=".7">varchar(300)</text>
+            <text x="70"  y="466" fill="#8fa8c8" font-size="9">Situation</text>            <text x="224" y="466" fill="#38bdf8" font-size="8" opacity=".7">int</text>
+            <text x="70"  y="480" fill="#8fa8c8" font-size="9">Role</text>                 <text x="224" y="480" fill="#38bdf8" font-size="8" opacity=".7">varchar(150)</text>
+            <text x="70"  y="494" fill="#8fa8c8" font-size="9">Claim</text>                <text x="224" y="494" fill="#38bdf8" font-size="8" opacity=".7">varchar(200)</text>
+            <text x="70"  y="508" fill="#8fa8c8" font-size="9">InclusionDt</text>          <text x="224" y="508" fill="#38bdf8" font-size="8" opacity=".7">datetime</text>
+          </g>
+
+          <!-- UserAccessLog  x=60 y=170 w=210 -->
+          <g id="eUserAccessLog">
+            <rect x="60" y="170" width="230" height="110" rx="10" fill="#112240" stroke="#38bdf8" stroke-width="1.2" stroke-opacity=".4"/>
+            <rect x="60" y="170" width="230" height="28"  rx="10" fill="rgba(0,229,160,.12)"/>
+            <rect x="60" y="188" width="230" height="10"  fill="rgba(0,229,160,.12)"/>
+            <text x="170" y="188" text-anchor="middle" fill="#FFF" font-size="11" font-weight="700">UserAccessLog</text>
+            <line x1="60" y1="198" x2="280" y2="198" stroke="#38bdf8" stroke-opacity=".2"/>
+            <text x="70"  y="214" fill="#e8f4fd" font-size="9">🔑 Code</text>             <text x="224" y="214" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="70"  y="228" fill="#8fa8c8" font-size="9">🔗 CodeUserAccess</text>    <text x="224" y="228" fill="#38bdf8" font-size="8" opacity=".7">uuid</text>
+            <text x="70"  y="242" fill="#8fa8c8" font-size="9">SituationDt</text>          <text x="224" y="242" fill="#38bdf8" font-size="8" opacity=".7">datetime</text>
+            <text x="70"  y="256" fill="#8fa8c8" font-size="9">Flow</text>                 <text x="224" y="256" fill="#38bdf8" font-size="8" opacity=".7">int</text>
+            <text x="70"  y="270" fill="#8fa8c8" font-size="9">Ip</text>                   <text x="224" y="270" fill="#38bdf8" font-size="8" opacity=".7">varchar(50)</text>
+          </g>
+
+          <!-- ===================== RELATIONSHIPS ===================== -->
+
+          <!-- Partner → PartnerCredentials (1:N upward) -->
+          <line x1="495" y1="200" x2="495" y2="142" stroke="#38bdf8" stroke-width="1.3" stroke-opacity=".6" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+          <text x="500" y="175" fill="#38bdf8" font-size="7.5" opacity=".7">1:N</text>
+
+          <!-- Partner → Onboarding (1:N rightward) -->
+          <line x1="621" y1="258" x2="738" y2="220" stroke="#38bdf8" stroke-width="1.3" stroke-opacity=".6" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+          <text x="658" y="237" fill="#38bdf8" font-size="7.5" opacity=".7">1:N</text>
+
+          <!-- Partner → User (1:N downward) -->
+          <line x1="495" y1="322" x2="495" y2="397" stroke="#38bdf8" stroke-width="1.3" stroke-opacity=".6" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+          <text x="500" y="360" fill="#38bdf8" font-size="7.5" opacity=".7">1:N</text>
+
+          <!-- Onboarding → OnboardingResult (1:1 downward) -->
+          <line x1="850" y1="287" x2="850" y2="378" stroke="#00e5a0" stroke-width="1.3" stroke-opacity=".7" stroke-dasharray="5,3" marker-end="url(#arrG)"/>
+          <text x="856" y="340" fill="#00e5a0" font-size="7.5" opacity=".8">1:1</text>
+
+          <!-- User → OnboardingResult (1:N rightward) -->
+          <line x1="621" y1="480" x2="740" y2="452" stroke="#00e5a0" stroke-width="1.3" stroke-opacity=".7" stroke-dasharray="5,3" marker-end="url(#arrG)"/>
+          <text x="664" y="462" fill="#00e5a0" font-size="7.5" opacity=".8">1:N</text>
+
+          <!-- UserAccess → UserAccessLog (1:N upward) -->
+          <line x1="170" y1="380" x2="170" y2="283" stroke="#38bdf8" stroke-width="1.3" stroke-opacity=".6" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+          <text x="174" y="340" fill="#38bdf8" font-size="7.5" opacity=".7">1:N</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /slides -->
+
+<!-- ARROW BUTTONS -->
+<button class="arrow-btn" id="arrowPrev" title="Slide anterior">&#8679;</button>
+<button class="arrow-btn" id="arrowNext" title="Próximo slide">&#8681;</button>
+
+<style>
+  .arrow-btn {
+    position: fixed;
+    right: 36px;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: rgba(17,34,64,0.85);
+    color: var(--accent2);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 200;
+    backdrop-filter: blur(8px);
+    transition: border-color .2s, background .2s, transform .15s, opacity .2s;
+    line-height: 1;
+  }
+  .arrow-btn:hover {
+    border-color: var(--accent);
+    background: rgba(0,229,160,0.12);
+    color: var(--accent);
+    transform: scale(1.1);
+  }
+  .arrow-btn:active { transform: scale(0.95); }
+  .arrow-btn:disabled { opacity: .2; pointer-events: none; }
+  #arrowPrev { bottom: 130px; }
+  #arrowNext { bottom: 80px; }
+</style>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const navDots  = document.getElementById('navDots');
+  const counter  = document.getElementById('counter');
+  const arrowPrev = document.getElementById('arrowPrev');
+  const arrowNext = document.getElementById('arrowNext');
+  const total    = sections.length;
+  let current    = 0;
+  let isScrolling = false;
+
+  // Build nav dots
+  sections.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    btn.title = `Slide ${i + 1}`;
+    btn.addEventListener('click', () => goTo(i));
+    navDots.appendChild(btn);
+  });
+
+  const dots = document.querySelectorAll('.nav-dot');
+
+  function updateUI() {
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    counter.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    arrowPrev.disabled = current === 0;
+    arrowNext.disabled = current === total - 1;
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= total || isScrolling) return;
+    current = idx;
+    isScrolling = true;
+    sections[current].scrollIntoView({ behavior: 'smooth' });
+    updateUI();
+    setTimeout(() => { isScrolling = false; }, 700);
+  }
+
+  arrowPrev.addEventListener('click', () => goTo(current - 1));
+  arrowNext.addEventListener('click', () => goTo(current + 1));
+
+  // Keyboard arrows
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown') {
+      e.preventDefault(); goTo(current + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); goTo(current - 1);
+    }
+  });
+
+  // Intersection observer to sync current index when user scrolls manually
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !isScrolling) {
+        current = [...sections].indexOf(entry.target);
+        updateUI();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => io.observe(s));
+  updateUI();
+</script>
+</body>
+</html>
