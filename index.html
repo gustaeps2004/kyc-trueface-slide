@@ -806,75 +806,148 @@
        SLIDE 5 — CASO DE USO
   ========================= -->
   <section id="s5">
-    <div class="slide-inner">
+    <div class="slide-inner" style="max-width:1100px;">
       <p class="slide-tag">05 — Caso de Uso</p>
       <h2 class="slide-title">Quem usa e como <span>interage</span></h2>
-      <div class="usecase-grid">
 
-        <div class="actor-col">
-          <div class="actor-card">
-            <div class="actor-name"><span class="actor-icon">🤖</span> Client via API</div>
-            <div class="actor-actions">
-              <div class="action-pill">📤 Enviar imagens para processo biométrico</div>
-              <div class="action-pill">🔍 Consultar resultado</div>
-              <div class="action-pill">🔔 Receber webhook</div>
-            </div>
-          </div>
+      <div style="width:100%;overflow:auto;margin-top:28px;">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 980 680"
+             style="width:100%;min-width:820px;font-family:'Syne',sans-serif;">
 
-          <div class="actor-card">
-            <div class="actor-name"><span class="actor-icon">👤</span> Usuário comum</div>
-            <div class="actor-actions">
-              <div class="action-pill">🆕 Realizar primeiro acesso</div>
-              <div class="action-pill">🔑 Efetuar login</div>
-              <div class="action-pill">🔒 Resetar senha</div>
-              <div class="action-pill">📋 Visualizar histórico</div>
-              <div class="action-pill">⏳ Visualizar análises pendentes</div>
-            </div>
-          </div>
+          <defs>
+            <marker id="uca" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#38bdf8" opacity=".7"/>
+            </marker>
+            <!-- actor head circle + body helper -->
+          </defs>
 
-          <div class="actor-card" style="border-color:rgba(0,229,160,0.3);">
-            <div class="actor-name" style="color:var(--accent)"><span class="actor-icon">🛡️</span> Usuário administrador</div>
-            <div class="actor-actions">
-              <div class="action-pill">✅ Aprovar análises pendentes</div>
-              <div class="action-pill">❌ Recusar análises pendentes</div>
-              <div class="action-pill">👥 Gerenciar usuários</div>
-            </div>
-          </div>
-        </div>
+          <!-- =========================================================
+               ACTOR: Client via API  (top-left)
+          ========================================================= -->
+          <!-- stick figure -->
+          <circle cx="72" cy="82" r="16" fill="none" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="98"  x2="72"  y2="140" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="108" x2="50"  y2="126" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="108" x2="94"  y2="126" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="140" x2="54"  y2="162" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="140" x2="90"  y2="162" stroke="#8fa8c8" stroke-width="1.5"/>
+          <text x="72" y="178" text-anchor="middle" fill="#8fa8c8" font-size="12">Client via API</text>
 
-        <div class="usecase-diagram">
-          <div class="uc-system-title">⬡ Sistema KYC TrueFace</div>
+          <!-- dashed arrow to system box 1 -->
+          <line x1="115" y1="112" x2="228" y2="112" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#uca)" stroke-opacity=".7"/>
 
-          <div class="uc-group">
-            <div class="uc-group-label">API Client</div>
-            <div class="uc-actions">
-              <div class="uc-oval">Enviar imagens biométricas</div>
-              <div class="uc-oval">Consultar resultado</div>
-              <div class="uc-oval">Receber webhook</div>
-            </div>
-          </div>
+          <!-- SYSTEM BOX 1 -->
+          <rect x="228" y="48" width="310" height="152" rx="10"
+                fill="rgba(17,34,64,0.7)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".4"/>
+          <!-- box title marker -->
+          <rect x="228" y="48" width="16" height="14" rx="3" fill="rgba(56,189,248,.25)"/>
+          <text x="250" y="59" fill="#38bdf8" font-size="9" opacity=".7">«system»</text>
 
-          <div class="uc-group">
-            <div class="uc-group-label">Usuário comum → Usuário Administrador</div>
-            <div class="uc-actions">
-              <div class="uc-oval">Primeiro acesso</div>
-              <div class="uc-oval">Login</div>
-              <div class="uc-oval">Resetar senha</div>
-              <div class="uc-oval">Histórico</div>
-              <div class="uc-oval">Análises pendentes</div>
-            </div>
-          </div>
+          <!-- ovals inside box 1 -->
+          <!-- Enviar imagens -->
+          <ellipse cx="318" cy="102" rx="78" ry="26" fill="rgba(17,34,64,0.5)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".5"/>
+          <text x="318" y="98"  text-anchor="middle" fill="#e8f4fd" font-size="10.5">Enviar imagens para</text>
+          <text x="318" y="112" text-anchor="middle" fill="#e8f4fd" font-size="10.5">o processo biométrico</text>
 
-          <div class="uc-group">
-            <div class="uc-group-label">Administrador</div>
-            <div class="uc-actions">
-              <div class="uc-oval" style="border-color:rgba(0,229,160,.3);color:var(--accent);">Aprovar análises</div>
-              <div class="uc-oval" style="border-color:rgba(0,229,160,.3);color:var(--accent);">Recusar análises</div>
-              <div class="uc-oval" style="border-color:rgba(0,229,160,.3);color:var(--accent);">Gerenciar usuários</div>
-            </div>
-          </div>
-        </div>
+          <!-- Consultar resultado -->
+          <ellipse cx="470" cy="102" rx="60" ry="26" fill="rgba(17,34,64,0.5)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".5"/>
+          <text x="470" y="98"  text-anchor="middle" fill="#e8f4fd" font-size="10.5">Consultar</text>
+          <text x="470" y="112" text-anchor="middle" fill="#e8f4fd" font-size="10.5">resultado</text>
 
+          <!-- Receber webhook -->
+          <ellipse cx="348" cy="166" rx="68" ry="24" fill="rgba(17,34,64,0.5)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".5"/>
+          <text x="348" y="162" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Receber</text>
+          <text x="348" y="176" text-anchor="middle" fill="#e8f4fd" font-size="10.5">webhook</text>
+
+
+          <!-- =========================================================
+               ACTOR: Usuário comum  (middle-left)
+          ========================================================= -->
+          <circle cx="72" cy="310" r="16" fill="none" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="326" x2="72"  y2="368" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="336" x2="50"  y2="354" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="336" x2="94"  y2="354" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="368" x2="54"  y2="390" stroke="#8fa8c8" stroke-width="1.5"/>
+          <line x1="72" y1="368" x2="90"  y2="390" stroke="#8fa8c8" stroke-width="1.5"/>
+          <text x="72" y="406" text-anchor="middle" fill="#8fa8c8" font-size="12">Usuário comum</text>
+
+          <!-- inheritance arrow (Usuário comum → Usuário administrador) -->
+          <line x1="72" y1="393" x2="72" y2="564" stroke="#8fa8c8" stroke-width="1.2" stroke-dasharray="4,3" stroke-opacity=".5"/>
+          <!-- hollow triangle arrowhead pointing up (generalization) -->
+          <polygon points="72,393 65,410 79,410" fill="none" stroke="#8fa8c8" stroke-width="1.2" stroke-opacity=".5"/>
+
+          <!-- dashed arrow to system box 2 -->
+          <line x1="115" y1="340" x2="228" y2="340" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#uca)" stroke-opacity=".7"/>
+
+          <!-- SYSTEM BOX 2 -->
+          <rect x="228" y="270" width="460" height="160" rx="10"
+                fill="rgba(17,34,64,0.7)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".4"/>
+          <rect x="228" y="270" width="16" height="14" rx="3" fill="rgba(56,189,248,.25)"/>
+          <text x="250" y="281" fill="#38bdf8" font-size="9" opacity=".7">«system»</text>
+
+          <!-- Realizar primeiro acesso -->
+          <ellipse cx="318" cy="308" rx="78" ry="24" fill="rgba(17,34,64,0.5)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".5"/>
+          <text x="318" y="304" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Realizar primeiro</text>
+          <text x="318" y="318" text-anchor="middle" fill="#e8f4fd" font-size="10.5">acesso</text>
+
+          <!-- Resetar senha -->
+          <ellipse cx="460" cy="308" rx="60" ry="24" fill="rgba(17,34,64,0.5)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".5"/>
+          <text x="460" y="304" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Resetar</text>
+          <text x="460" y="318" text-anchor="middle" fill="#e8f4fd" font-size="10.5">senha</text>
+
+          <!-- Efetuar login -->
+          <ellipse cx="608" cy="308" rx="58" ry="24" fill="rgba(17,34,64,0.5)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".5"/>
+          <text x="608" y="304" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Efetuar</text>
+          <text x="608" y="318" text-anchor="middle" fill="#e8f4fd" font-size="10.5">login</text>
+
+          <!-- Visualizar histórico -->
+          <ellipse cx="348" cy="390" rx="72" ry="24" fill="rgba(17,34,64,0.5)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".5"/>
+          <text x="348" y="386" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Visualizar</text>
+          <text x="348" y="400" text-anchor="middle" fill="#e8f4fd" font-size="10.5">histórico</text>
+
+          <!-- Visualizar análises pendentes -->
+          <ellipse cx="530" cy="390" rx="82" ry="24" fill="rgba(17,34,64,0.5)" stroke="#38bdf8" stroke-width="1" stroke-opacity=".5"/>
+          <text x="530" y="386" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Visualizar análises</text>
+          <text x="530" y="400" text-anchor="middle" fill="#e8f4fd" font-size="10.5">pendentes</text>
+
+
+          <!-- =========================================================
+               ACTOR: Usuário administrador  (bottom-left)
+          ========================================================= -->
+          <circle cx="72" cy="564" r="16" fill="none" stroke="#00e5a0" stroke-width="1.5"/>
+          <line x1="72" y1="580" x2="72"  y2="622" stroke="#00e5a0" stroke-width="1.5"/>
+          <line x1="72" y1="590" x2="50"  y2="608" stroke="#00e5a0" stroke-width="1.5"/>
+          <line x1="72" y1="590" x2="94"  y2="608" stroke="#00e5a0" stroke-width="1.5"/>
+          <line x1="72" y1="622" x2="54"  y2="644" stroke="#00e5a0" stroke-width="1.5"/>
+          <line x1="72" y1="622" x2="90"  y2="644" stroke="#00e5a0" stroke-width="1.5"/>
+          <text x="72" y="660" text-anchor="middle" fill="#00e5a0" font-size="12">Usuário administrador</text>
+
+          <!-- dashed arrow to system box 3 -->
+          <line x1="115" y1="594" x2="228" y2="594" stroke="#00e5a0" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#uca)" stroke-opacity=".8"/>
+
+          <!-- SYSTEM BOX 3 -->
+          <rect x="228" y="520" width="420" height="148" rx="10"
+                fill="rgba(17,34,64,0.7)" stroke="#00e5a0" stroke-width="1" stroke-opacity=".4"/>
+          <rect x="228" y="520" width="16" height="14" rx="3" fill="rgba(0,229,160,.2)"/>
+          <text x="250" y="531" fill="#00e5a0" font-size="9" opacity=".7">«system»</text>
+
+          <!-- Aprovar análises pendentes -->
+          <ellipse cx="338" cy="570" rx="86" ry="26" fill="rgba(17,34,64,0.5)" stroke="#00e5a0" stroke-width="1" stroke-opacity=".5"/>
+          <text x="338" y="566" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Aprovar análises</text>
+          <text x="338" y="580" text-anchor="middle" fill="#e8f4fd" font-size="10.5">pendentes</text>
+
+          <!-- Recusar análises pendentes -->
+          <ellipse cx="536" cy="570" rx="88" ry="26" fill="rgba(17,34,64,0.5)" stroke="#00e5a0" stroke-width="1" stroke-opacity=".5"/>
+          <text x="536" y="566" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Recusar análises</text>
+          <text x="536" y="580" text-anchor="middle" fill="#e8f4fd" font-size="10.5">pendentes</text>
+
+          <!-- Gerenciar usuários -->
+          <ellipse cx="380" cy="638" rx="78" ry="24" fill="rgba(17,34,64,0.5)" stroke="#00e5a0" stroke-width="1" stroke-opacity=".5"/>
+          <text x="380" y="634" text-anchor="middle" fill="#e8f4fd" font-size="10.5">Gerenciar</text>
+          <text x="380" y="648" text-anchor="middle" fill="#e8f4fd" font-size="10.5">usuários</text>
+
+        </svg>
       </div>
     </div>
   </section>
