@@ -1046,6 +1046,123 @@
     </div>
   </section>
 
+    <!-- ========================
+       SLIDE 7 — AGRADECIMENTOS
+  ========================= -->
+  <section id="s7" style="background: radial-gradient(ellipse 80% 70% at 50% 50%, #062840 0%, #0d1b2a 70%); flex-direction:column; text-align:center; gap:0;">
+ 
+    <!-- animated rings -->
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:500px;height:500px;border:1px solid rgba(0,229,160,.08);border-radius:50%;animation:ringPulse 4s ease-in-out infinite;"></div>
+      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:360px;height:360px;border:1px solid rgba(56,189,248,.1);border-radius:50%;animation:ringPulse 4s .8s ease-in-out infinite;"></div>
+      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:220px;border:1px solid rgba(0,229,160,.15);border-radius:50%;animation:ringPulse 4s 1.6s ease-in-out infinite;"></div>
+    </div>
+ 
+    <style>
+      @keyframes ringPulse {
+        0%,100% { opacity:.3; transform:translate(-50%,-50%) scale(1); }
+        50%      { opacity:.8; transform:translate(-50%,-50%) scale(1.04); }
+      }
+      @keyframes floatY {
+        0%,100% { transform: translateY(0); }
+        50%      { transform: translateY(-10px); }
+      }
+      .ty-icon {
+        font-size: 3.5rem;
+        margin-bottom: 28px;
+        animation: floatY 3s ease-in-out infinite;
+        display: block;
+        position: relative;
+        z-index: 1;
+      }
+      .ty-title {
+        font-size: 3.8rem;
+        font-weight: 800;
+        letter-spacing: -2px;
+        line-height: 1;
+        margin-bottom: 14px;
+        position: relative;
+        z-index: 1;
+      }
+      .ty-title span { color: var(--accent); }
+      .ty-sub {
+        font-size: 1.1rem;
+        color: var(--muted);
+        margin-bottom: 56px;
+        position: relative;
+        z-index: 1;
+        font-weight: 400;
+      }
+      .ty-divider {
+        width: 60px; height: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        margin: 0 auto 48px;
+        border-radius: 2px;
+        position: relative;
+        z-index: 1;
+      }
+      .ty-question {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 1;
+      }
+      .ty-question span { color: var(--accent2); }
+      .ty-question-sub {
+        font-size: 0.95rem;
+        color: var(--muted);
+        font-family: 'Space Mono', monospace;
+        position: relative;
+        z-index: 1;
+      }
+      .ty-author-card {
+        display: inline-flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 52px;
+        background: rgba(17,34,64,.8);
+        border: 1px solid rgba(56,189,248,.2);
+        border-radius: 999px;
+        padding: 14px 32px;
+        backdrop-filter: blur(8px);
+        position: relative;
+        z-index: 1;
+      }
+      .ty-avatar {
+        width: 46px; height: 46px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #0d1b2a;
+        flex-shrink: 0;
+      }
+      .ty-author-info { text-align: left; }
+      .ty-author-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+      .ty-author-role { font-size: 0.78rem; color: var(--muted); font-family: 'Space Mono', monospace; }
+    </style>
+ 
+    <h2 class="ty-title">Obrigado<span>!</span></h2>
+    <p class="ty-sub">KYC TrueFace — Validação biométrica simples, rápida e 100% via API.</p>
+ 
+    <div class="ty-divider"></div>
+ 
+    <h3 class="ty-question">Alguma <span>pergunta?</span></h3>
+    <p class="ty-question-sub">Estou à disposição para responder 🙂</p>
+ 
+    <div class="ty-author-card">
+      <div class="ty-avatar">GS</div>
+      <div class="ty-author-info">
+        <div class="ty-author-name">Gustavo do Espirito Santo</div>
+        <div class="ty-author-role">Desenvolvedor de software</div>
+      </div>
+    </div>
+ 
+  </section>
+ 
+
 </div><!-- /slides -->
 
 <!-- ARROW BUTTONS -->
